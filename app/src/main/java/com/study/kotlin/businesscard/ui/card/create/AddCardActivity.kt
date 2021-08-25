@@ -22,6 +22,12 @@ class AddCardActivity : AppCompatActivity() {
 
     fun setuplistener() {
 
+        binding.btnClose.setOnClickListener {
+            finish()
+        }
 
+        binding.btnConfirm.setOnClickListener{
+
+        }
     }
 }
