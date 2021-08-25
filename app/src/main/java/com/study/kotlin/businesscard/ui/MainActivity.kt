@@ -1,7 +1,8 @@
-package com.study.kotlin.businesscard
+package com.study.kotlin.businesscard.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.study.kotlin.businesscard.R
 
 class MainActivity : AppCompatActivity() {
 
