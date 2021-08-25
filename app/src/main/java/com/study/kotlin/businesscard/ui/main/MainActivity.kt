@@ -1,4 +1,4 @@
-package com.study.kotlin.businesscard.ui
+package com.study.kotlin.businesscard.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
