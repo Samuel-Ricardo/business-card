@@ -3,7 +3,7 @@ package com.study.kotlin.businesscard.ui.card.create
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class AddCrad : AppCompatActivity() {
+class AddCardActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
