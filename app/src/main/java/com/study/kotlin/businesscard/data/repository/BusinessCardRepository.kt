@@ -14,4 +14,5 @@ class BusinessCardRepository(private val DAO: BusinessCardDAO) {
     }
   }
 
+  fun getAll() = DAO.getAll();
 }
