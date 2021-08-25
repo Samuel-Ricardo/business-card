@@ -15,12 +15,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setup(){
-
         setuplistener()
     }
 
     fun setuplistener() {
 
-
+        binding.fabAdd.setOnClickListener{
+            
+        }
     }
 }
