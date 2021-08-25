@@ -13,4 +13,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
     }
+
+    fun setup(){
+
+        setuplistener()
+    }
+
+    fun setuplistener() {
+
+
+    }
 }

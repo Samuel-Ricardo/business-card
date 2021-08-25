@@ -14,4 +14,14 @@ class AddCardActivity : AppCompatActivity() {
         setContentView(binding.root)
         setup()
     }
+
+    fun setup(){
+
+        setuplistener()
+    }
+
+    fun setuplistener() {
+
+
+    }
 }
