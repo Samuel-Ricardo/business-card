@@ -2,4 +2,9 @@
     <string name="app_name">BusinessCard</string>
     <string name="app_title">Bussines Card App</string>
     <string name="lblName">Nome</string>
+    <string name="lblCompany">Empresa</string>
+    <string name="lblPhone">Telefone</string>
+    <string name="lblEmail">Email</string>
+    <string name="lblColor">Cor</string>
+    <string name="btnConfirm">Confirmar</string>
 </resources>
