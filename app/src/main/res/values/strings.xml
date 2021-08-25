@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">BusinessCard</string>
     <string name="app_title">Bussines Card App</string>
+    <string name="lblName">Nome</string>
 </resources>
