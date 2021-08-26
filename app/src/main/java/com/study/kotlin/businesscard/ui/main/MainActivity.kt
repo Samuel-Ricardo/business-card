@@ -38,14 +38,18 @@ class MainActivity : AppCompatActivity() {
         binding.rcCards.adapter = adapter
 
         setuplistener()
+
+        getAllBusinessCard()
     }
 
-   fun setupPermissions(){
+    fun setupPermissions(){
+
      ActivityCompat.requestPermissions(
        this,
        arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
        1
      )
+
      requestPermissions(
        arrayOf(
          Manifest.
@@ -66,11 +70,10 @@ class MainActivity : AppCompatActivity() {
 
   private fun getAllBusinessCard() {
 
-    mainViewModel.getAll().observe((this, {businessCards ->
+    mainViewModel.getAll().observe(this, {businessCards ->
 
-          adapter.submitList(businessCards)
-        }
-      )
+        adapter.submitList(businessCards)
+      }
     )
   }
 }
