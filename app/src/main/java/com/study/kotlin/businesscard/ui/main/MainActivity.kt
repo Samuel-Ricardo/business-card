@@ -69,6 +69,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         adapter.listenerShare = { card ->
+
           Image.share(this,card)
         }
     }

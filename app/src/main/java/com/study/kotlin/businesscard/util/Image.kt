@@ -5,6 +5,9 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.util.Log
 import android.view.View
+import android.os.Build
+import android.provider.MediaStore
+import java.io.OutputStream
 
 class Image {
 
@@ -37,6 +40,24 @@ class Image {
       }
 
       return screenshot
+    }
+
+    private fun saveMediaStorage(context: Context, bitmap: Bitmap) {
+
+      val FILE_NAME = "${System.currentTimeMillis()}.jpg"
+
+      var fos: OutputStream? = null
+
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+
+        context.contentResolver?.also {
+          put(MediaStore.MediaColumns.DISPLAY_NAME, filename)
+          put(MediaStore.MediaColumns.MIME_TYPE, "image/jpg")
+          put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_PICTURES)
+        }
+
+        val imageURI: Uri? = resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
+      }
     }
   }
 
