@@ -1,6 +1,9 @@
 package com.study.kotlin.businesscard.ui.adapter
 
 import android.graphics.Color
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -10,7 +13,21 @@ import com.study.kotlin.businesscard.databinding.CardBinding
 class CardAdapter: ListAdapter<
     BusinessCard,
     CardViewHolder
-    >(DiffCallback) {
+    >(DiffCallback()) {
+
+  var listenerShare: (View) -> Unit = {}
+
+  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
+
+    val inflater = LayoutInflater.from(parent.context)
+    val binding = CardBinding.inflate(inflater, parent, false)
+
+    return CardViewHolder(binding)
+  }
+
+  override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
+    holder.bind(getItem(position))
+  }
 }
 
 class CardViewHolder(
