@@ -1,12 +1,21 @@
 package com.study.kotlin.businesscard.util
 
+import android.content.ContentValues
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.net.Uri
 import android.util.Log
 import android.view.View
 import android.os.Build
+import android.os.Environment
 import android.provider.MediaStore
+import android.widget.Toast
+import androidx.core.content.FileProvider.getUriForFile
+import com.study.kotlin.businesscard.R
+import java.io.File
+import java.io.FileOutputStream
 import java.io.OutputStream
 
 class Image {
@@ -50,11 +59,12 @@ class Image {
 
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
 
-        context.contentResolver?.also {
-          put(MediaStore.MediaColumns.DISPLAY_NAME, filename)
-          put(MediaStore.MediaColumns.MIME_TYPE, "image/jpg")
-          put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_PICTURES)
-        }
+        context.contentResolver?.also { resolver ->
+          val contentValues = ContentValues().apply {
+            put(MediaStore.MediaColumns.DISPLAY_NAME, filename)
+            put(MediaStore.MediaColumns.MIME_TYPE, "image/jpg")
+            put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_PICTURES)
+          }
 
         val imageUri: Uri? =
           resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
@@ -69,7 +79,7 @@ class Image {
       val imagesDir = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
       val image = File(imagesDir, filename)
       val imageUri: Uri =
-        getUriForFile(context, "br.com.dio.businesscard.fileprovider", image)
+        getUriForFile(context, "br.com.kotlin.study.businesscard.fileprovider", image)
       shareIntent(context, imageUri)
       fos = FileOutputStream(image)
     }
