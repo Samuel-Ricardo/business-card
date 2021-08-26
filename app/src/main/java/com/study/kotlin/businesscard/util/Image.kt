@@ -102,8 +102,6 @@ class Image {
         context.resources.getText(R.string.label_share_to)
       )
     )
+   }
   }
-    }
-  }
-
 }
