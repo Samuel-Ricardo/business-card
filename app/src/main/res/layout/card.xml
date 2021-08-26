@@ -5,13 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    android:padding="10dp"
-    android:layout_margin="16dp">
+    >
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
+        android:padding="10dp"
+        android:layout_margin="16dp"
+
+        android:background="#FF9800"
 
         android:checkable="true"
         android:clickable="true"
@@ -30,7 +34,11 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cd_content"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+
+            android:background="@color/white"
+            >
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvCardName"

@@ -39,6 +39,12 @@ class AddCardActivity : AppCompatActivity() {
 
         binding.btnConfirm.setOnClickListener{
 
+          Toast.makeText(
+            this,
+            getString(R.string.saving),
+            Toast.LENGTH_LONG
+          ).show()
+
             val businessCard = BusinessCard(
 
                 name = textOf(binding.inputName),
@@ -52,7 +58,7 @@ class AddCardActivity : AppCompatActivity() {
           mainViewModel.insert(businessCard)
           Toast.makeText(
             this,
-            R.string.lblsuccess,
+            R.string.lbl_success,
             Toast.LENGTH_LONG
           ).show()
 

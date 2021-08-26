@@ -9,4 +9,5 @@
     <string name="btnConfirm">Confirmar</string>
     <string name="new_card">Novo Cartão</string>
     <string name="lbl_success">Realizado com Sucesso</string>
+    <string name="saving">Salvando</string>
 </resources>
