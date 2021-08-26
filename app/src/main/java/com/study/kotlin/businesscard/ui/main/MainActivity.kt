@@ -13,6 +13,7 @@ import com.study.kotlin.businesscard.ui.adapter.CardAdapter
 import com.study.kotlin.businesscard.ui.card.create.AddCardActivity
 import com.study.kotlin.businesscard.ui.viewmodel.MainViewModel
 import com.study.kotlin.businesscard.ui.viewmodel.factory.MainViewModelFactory
+import com.study.kotlin.businesscard.util.Image
 
 
 class MainActivity : AppCompatActivity() {
@@ -65,6 +66,10 @@ class MainActivity : AppCompatActivity() {
         binding.fabAdd.setOnClickListener{
             val intent = Intent(this@MainActivity, AddCardActivity::class.java)
             startActivity(intent)
+        }
+
+        adapter.listenerShare = { card ->
+          Image.share(this,card)
         }
     }
 
