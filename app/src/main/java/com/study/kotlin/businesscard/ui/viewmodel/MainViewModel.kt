@@ -1,5 +1,11 @@
 package com.study.kotlin.businesscard.ui.viewmodel
 
-class MainViewModel (){
+import androidx.lifecycle.ViewModel
+import com.study.kotlin.businesscard.data.repository.BusinessCardRepository
+
+class MainViewModel (
+  private val businessCardRepository: BusinessCardRepository
+): ViewModel(){
+
 
 }
