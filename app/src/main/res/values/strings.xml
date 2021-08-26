@@ -8,4 +8,5 @@
     <string name="lblColor">Cor</string>
     <string name="btnConfirm">Confirmar</string>
     <string name="new_card">Novo Cartão</string>
+    <string name="lbl_success">Realizado com Sucesso</string>
 </resources>

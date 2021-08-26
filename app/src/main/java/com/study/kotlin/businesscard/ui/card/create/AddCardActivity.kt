@@ -2,6 +2,7 @@ package com.study.kotlin.businesscard.ui.card.create
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import com.google.android.material.textfield.TextInputLayout
 import com.study.kotlin.businesscard.App
@@ -40,14 +41,27 @@ class AddCardActivity : AppCompatActivity() {
 
             val businessCard = BusinessCard(
 
+                name = textOf(binding.inputName),
+                email = textOf(binding.inputEmail),
+                company = textOf(binding.inputCompany),
+                phone = textOf(binding.inputPhone),
+                background = textOf(binding.inputColor)
 
             )
 
+          mainViewModel.insert(businessCard)
+          Toast.makeText(
+            this,
+            R.string.lblsuccess,
+            Toast.LENGTH_LONG
+          ).show()
+
+          finish()
         }
     }
 
     fun textOf(textInput: TextInputLayout): String{
 
-        return textInput.editText?.toString()
+        return textInput.editText?.text.toString()
     }
 }
