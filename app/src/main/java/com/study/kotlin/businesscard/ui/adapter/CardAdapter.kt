@@ -12,40 +12,40 @@ import com.study.kotlin.businesscard.databinding.CardBinding
 
 class CardAdapter: ListAdapter<
     BusinessCard,
-    CardViewHolder
+    CardAdapter.ViewHolder
     >(DiffCallback()) {
 
   var listenerShare: (View) -> Unit = {}
 
-  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
+  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
     val inflater = LayoutInflater.from(parent.context)
     val binding = CardBinding.inflate(inflater, parent, false)
 
-    return CardViewHolder(binding)
+    return ViewHolder(binding)
   }
 
-  override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
+  override fun onBindViewHolder(holder: ViewHolder, position: Int) {
     holder.bind(getItem(position))
   }
-}
 
-class CardViewHolder(
-  private val binding: CardBinding
-) : RecyclerView.ViewHolder(binding.root) {
+  inner class ViewHolder(
+    private val binding: CardBinding
+  ) : RecyclerView.ViewHolder(binding.root) {
 
-  fun bind(item:BusinessCard) {
+    fun bind(item:BusinessCard) {
 
-    binding.tvCardName.text = item.name
-    binding.tvCardMail.text = item.email
-    binding.tvCardPhone.text = item.phone
-    binding.tvCardEmpresa.text = item.company
+      binding.tvCardName.text = item.name
+      binding.tvCardMail.text = item.email
+      binding.tvCardPhone.text = item.phone
+      binding.tvCardEmpresa.text = item.company
 
-    binding.cdContent.setBackgroundColor(
-      Color.parseColor(item.background)
-    )
-    binding.cardview.setOnClickListener {
-      listenerShare(it)
+      binding.cdContent.setBackgroundColor(
+        Color.parseColor(item.background)
+      )
+      binding.cardview.setOnClickListener {
+        listenerShare(it)
+      }
     }
   }
 }
