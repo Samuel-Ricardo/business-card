@@ -63,4 +63,14 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
+  private fun getAllBusinessCard() {
+
+    mainViewModel.getAll().observe((this, {businessCards ->
+
+          adapter.submitList(businessCards)
+        }
+      )
+    )
+  }
 }
