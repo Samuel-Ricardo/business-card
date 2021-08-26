@@ -44,7 +44,7 @@ class Image {
 
     private fun saveMediaStorage(context: Context, bitmap: Bitmap) {
 
-      val FILE_NAME = "${System.currentTimeMillis()}.jpg"
+      val filename = "${System.currentTimeMillis()}.jpg"
 
       var fos: OutputStream? = null
 
@@ -56,8 +56,43 @@ class Image {
           put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_PICTURES)
         }
 
-        val imageURI: Uri? = resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
+        val imageUri: Uri? =
+          resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
+
+        fos = imageUri?.let {
+          shareIntent(context, imageUri)
+          resolver.openOutputStream(it)
+        }
       }
+    } else {
+      // These for devices running on android < Q
+      val imagesDir = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+      val image = File(imagesDir, filename)
+      val imageUri: Uri =
+        getUriForFile(context, "br.com.dio.businesscard.fileprovider", image)
+      shareIntent(context, imageUri)
+      fos = FileOutputStream(image)
+    }
+
+    fos?.use {
+      bitmap.compress(Bitmap.CompressFormat.JPEG, 100, it)
+      Toast.makeText(context, "Imagem capturada com sucesso", Toast.LENGTH_SHORT).show()
+    }
+  }
+
+  private fun shareIntent(context: Context, image: Uri) {
+    val shareIntent: Intent = Intent().apply {
+      action = Intent.ACTION_SEND
+      putExtra(Intent.EXTRA_STREAM, image)
+      type = "image/jpeg"
+    }
+    context.startActivity(
+      Intent.createChooser(
+        shareIntent,
+        context.resources.getText(R.string.label_share_to)
+      )
+    )
+  }
     }
   }
 
